@@ -82,7 +82,8 @@ static int client_compute_key(unsigned char *shared_secret, const BIGNUM *public
     QKD_debug("Key handle = %s", QKD_key_handle_str(&key_handle));
 
     /* Use fixed QoS parameters. */
-    int shared_secret_size = DH_size(dh);
+    // int shared_secret_size = DH_size(dh);
+    int shared_secret_size = QKD_shared_secret_nr_bytes(dh);
     QKD_qos_t qos = {
         .requested_length = shared_secret_size,
         .max_bps = 0,

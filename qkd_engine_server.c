@@ -54,7 +54,8 @@ static int server_generate_key(DH *dh)
         /* TODO: Also encode the local address of the listening socket into the public key */
 
         /* Use fixed QoS parameters. */
-        int shared_secret_size = DH_size(dh);
+        // int shared_secret_size = DH_size(dh);
+        int shared_secret_size = QKD_shared_secret_nr_bytes(dh);
         QKD_qos_t qos = {
             .requested_length = shared_secret_size,
             .max_bps = 0,
@@ -130,7 +131,8 @@ static int server_compute_key(unsigned char *shared_secret, const BIGNUM *client
         QKD_error("QKD_get_key failed (return code %d)", convert_result);
         QKD_return_error("%d", -1);
     }
-    int shared_secret_size = DH_size(dh);
+    // int shared_secret_size = DH_size(dh);
+    int shared_secret_size = QKD_shared_secret_nr_bytes(dh);
     QKD_debug("shared secret = %s", QKD_shared_secret_str((char *)shared_secret,
                                                            shared_secret_size));
 

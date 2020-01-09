@@ -18,7 +18,7 @@ bool QKD_return_fixed_key_for_testing = false; /* Use command line option orenvi
 const unsigned long QKD_fixed_private_key = 1;
 const unsigned long QKD_fixed_public_key = 2;
 
-bool running_on_simulaqron = false;
+bool running_on_simulaqron = true;
 
 /**
  * Convert an OpenSSL public key (which is stored as a big number) to an ETSI API key handle.
