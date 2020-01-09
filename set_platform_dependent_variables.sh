@@ -19,18 +19,19 @@ export OPENSSL_INCLUDE=${OPENSSL}/include
 export OPENSSL_LIB=${OPENSSL}
 export OPENSSL_BIN=${OPENSSL}/apps
 export ENGINE_DIR=/usr/local/lib/engines-3
+export RUST_QKD_LIB=${HOME}/qkd/openssl-qkd-rust/target/release/
 
 # Platform dependencies
 UNAME_S=$(uname -s)
 if [[ ${UNAME_S} == "Linux" ]]; then
     export SHARED_EXT=.so
-    export LD_LIBRARY_PATH="${ENGINE_DIR}:${OPENSSL}:${LD_LIBRARY_PATH}"
+    export LD_LIBRARY_PATH="${ENGINE_DIR}:${OPENSSL}:${LD_LIBRARY_PATH}:${RUST_QKD_LIB}"
     # export MAYBE_SUDO="sudo"
     export MAYBE_SUDO=""
     export LOOPBACK="lo"
 elif [[ ${UNAME_S} == "Darwin" ]]; then
     export SHARED_EXT=.dylib
-    export DYLD_FALLBACK_LIBRARY_PATH="${ENGINE_DIR}:${OPENSSL}:${DYLD_FALLBACK_LIBRARY_PATH}"
+    export DYLD_FALLBACK_LIBRARY_PATH="${ENGINE_DIR}:${OPENSSL}:${DYLD_FALLBACK_LIBRARY_PATH}:${RUST_QKD_LIB}"
     export MAYBE_SUDO=""
     export LOOPBACK="lo0"
 else

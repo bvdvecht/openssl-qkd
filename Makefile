@@ -18,26 +18,28 @@ OPENSSL_INCLUDE = $(OPENSSL)/include
 OPENSSL_LIB = $(OPENSSL)
 OPENSSL_BIN = $(OPENSSL)/apps
 ENGINE_DIR = /usr/local/lib/engines-3
+RUST_QKD_LIB = $(HOME)/qkd/openssl-qkd-rust/target/release/
 
-CFLAGS = -Wall -Werror -I. -I$(OPENSSL_INCLUDE) -L$(OPENSSL_LIB) -g -fPIC
+CFLAGS = -Wall -Werror -I. -I$(OPENSSL_INCLUDE) -L$(OPENSSL_LIB) -L$(RUST_QKD_LIB) -g -fPIC
 
 CLIENT = qkd_engine_client$(SHARED_EXT)
 SERVER = qkd_engine_server$(SHARED_EXT)
 
 all: $(CLIENT) $(SERVER) key.pem cert.pem $(ENGINE_DIR)/$(CLIENT) $(ENGINE_DIR)/$(SERVER)
 
-MOCK_API_C = qkd_api_common.c qkd_api_mock.c
+# MOCK_API_C = qkd_api_common.c qkd_api_mock.c
+MOCK_API_C = qkd_api_common.c
 MOCK_API_H = qkd_api.h
 
 CLIENT_C = qkd_engine_client.c qkd_engine_common.c qkd_debug.c $(MOCK_API_C)
 CLIENT_H = qkd_engine_common.h $(MOCK_API_H)
 $(CLIENT): $(CLIENT_C) $(CLIENT_H)
-	$(LINK.c) -shared -o $@ $(CLIENT_C) -lcrypto
+	$(LINK.c) -shared -o $@ $(CLIENT_C) -lcrypto -lqkdapi
 
 SERVER_C = qkd_engine_server.c qkd_engine_common.c qkd_debug.c $(MOCK_API_C)
 SERVER_H = qkd_engine_common.h $(MOCK_API_H)
 $(SERVER): $(SERVER_C) $(SERVER_H)
-	$(LINK.c) -shared -o $@ $(SERVER_C) -lcrypto
+	$(LINK.c) -shared -o $@ $(SERVER_C) -lcrypto -lqkdapi
 
 key.pem cert.pem:
 	$(SHARED_PATH_ENV)=${HOME}/openssl \
