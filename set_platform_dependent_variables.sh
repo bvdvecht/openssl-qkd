@@ -25,7 +25,8 @@ UNAME_S=$(uname -s)
 if [[ ${UNAME_S} == "Linux" ]]; then
     export SHARED_EXT=.so
     export LD_LIBRARY_PATH="${ENGINE_DIR}:${OPENSSL}:${LD_LIBRARY_PATH}"
-    export MAYBE_SUDO="sudo"
+    # export MAYBE_SUDO="sudo"
+    export MAYBE_SUDO=""
     export LOOPBACK="lo"
 elif [[ ${UNAME_S} == "Darwin" ]]; then
     export SHARED_EXT=.dylib
