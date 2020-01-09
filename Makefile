@@ -64,7 +64,10 @@ $(ENGINE_DIR)/$(SERVER): $(SERVER)
 mock-test:
 	./run_mock_test.sh
 
-test: all mock-test
+simulaqron-test:
+	./run_simulaqron_test.sh
+
+test: all simulaqron-test
 
 clean: clean-test
 	$(MAYBE_SUDO) rm -rf $(ENGINE_DIR)/$(CLIENT) $(ENGINE_DIR)/$(SERVER)
