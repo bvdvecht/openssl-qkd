@@ -71,3 +71,5 @@ The report consists of multiple parts (if you are already familiar with classica
    * Gives instructions on how to build and run the code in this repository.
 
 At some point in the future, I also plan to implement BB84 on top of [SimulaQron](http://www.simulaqron.org/) and add a part 5 to this report to document that work.
+
+ * Part 5: [**QKD on top of SimulaQron**](doc/qkd-on-top-of-simulaqron.md)
