@@ -18,7 +18,7 @@ OPENSSL_INCLUDE = $(OPENSSL)/include
 OPENSSL_LIB = $(OPENSSL)
 OPENSSL_BIN = $(OPENSSL)/apps
 ENGINE_DIR = /usr/local/lib/engines-3
-RUST_QKD_LIB = $(HOME)/qkd/openssl-qkd-rust/target/release/
+RUST_QKD_LIB = $(HOME)/qkd/qkd-rust/target/release/
 
 CFLAGS = -Wall -Werror -I. -I$(OPENSSL_INCLUDE) -L$(OPENSSL_LIB) -L$(RUST_QKD_LIB) -g -fPIC
 

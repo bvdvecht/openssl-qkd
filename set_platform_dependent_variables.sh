@@ -19,7 +19,7 @@ export OPENSSL_INCLUDE=${OPENSSL}/include
 export OPENSSL_LIB=${OPENSSL}
 export OPENSSL_BIN=${OPENSSL}/apps
 export ENGINE_DIR=/usr/local/lib/engines-3
-export RUST_QKD_LIB=${HOME}/qkd/openssl-qkd-rust/target/release/
+export RUST_QKD_LIB=${HOME}/qkd/qkd-rust/target/release/
 
 # Platform dependencies
 UNAME_S=$(uname -s)
