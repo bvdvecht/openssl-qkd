@@ -2,7 +2,7 @@
 
 I implemented the ETSI QKD API in Rust, as a dynamically loaded library. 
 The library source can be found here: [qkd-rust](https://github.com/bvdvecht/qkd-rust). 
-It depends on two other Rust libraries: [cqc-rust-wrappers](https://github.com/bvdvecht/cqc-rust-wrappers) and *version 0.4* of [cqc](https://docs.rs/crate/cqc/0.4.0).
+It depends on two other Rust libraries: [cqc-rust-wrappers](https://github.com/bvdvecht/cqc-rust-wrappers) and *version 0.5* of [cqc](https://docs.rs/crate/cqc/0.5.0).
 
 The implementation uses the [Simulaqron](https://github.com/SoftwareQuTech/SimulaQron) quantum network simulator to perform a (for now) very simple and naive QKD protocol: one party creates EPR pairs and sends half of each pair to the other party, after which both parties measure their halves to obtain a shared key.
 Currently the client and server use hardcoded ports to interface with Simulaqron, and must both be running on localhost.
