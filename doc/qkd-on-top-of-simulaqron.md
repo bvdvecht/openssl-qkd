@@ -24,6 +24,7 @@ Now, the `qkdapi` library (e.g. `libqkdapi.so` on Linux) should be available in 
 
 Now you can clone this repo and run the test, which will automatically start Simulaqron with the correct config file.
 ~~~
+cd ~/qkd
 git clone https://github.com/bvdvecht/openssl-qkd.git
 cd openssl-qkd
 make
